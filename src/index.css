@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Fraunces', 'Playfair Display', Georgia, serif;
+    --font-cert-serif: 'Playfair Display', 'Lora', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #FAF8F3;
+    color: #18221F;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-cert-serif {
+    font-family: var(--font-cert-serif);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom A4 Landscape Certificate Styling */
+.cert-page-a4 {
+  width: 1122.5px; /* 297mm at 96dpi */
+  height: 793.7px; /* 210mm at 96dpi */
+  background-color: #FAF9F6;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #1A1A1A;
+  user-select: text;
+}
+
+@media print {
+  @page {
+    size: 297mm 210mm;
+    margin: 0mm;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FAF9F6 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only-container {
+    display: block !important;
+    width: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .cert-print-page {
+    width: 297mm !important;
+    height: 210mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .cert-print-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+}
